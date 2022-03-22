@@ -1,7 +1,7 @@
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
-const accessTokenKey = 'accessToken';
-const loginUrl = 'http://localhost:9000/login';
+const accessTokenKey = "accessToken";
+const loginUrl = "http://localhost:9001/login";
 
 function getUserFromToken(token) {
   return jwtDecode(token).sub;
@@ -21,16 +21,16 @@ export function getLoggedInUser() {
 
 export async function login(name, password) {
   const response = await fetch(loginUrl, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'content-type': 'application/json'
+      "content-type": "application/json",
     },
-    body: JSON.stringify({name, password})
+    body: JSON.stringify({ name, password }),
   });
   if (!response.ok) {
     return null;
   }
-  const {token} = await response.json();
+  const { token } = await response.json();
   localStorage.setItem(accessTokenKey, token);
   return getUserFromToken(token);
 }
