@@ -1,13 +1,20 @@
+import { useQuery } from "@apollo/react-hooks";
 import React, { useState } from "react";
+import client from "./graphql/client";
+import { messagesQuery } from "./graphql/queries";
 import MessageInput from "./MessageInput";
 import MessageList from "./MessageList";
 
 const Chat = ({ user }) => {
-  const [messages, setMessages] = useState([]);
+  const { data } = useQuery(messagesQuery);
+  // const [result, setResult] = useState({ loading: true });
+  // client
+  //   .query({ query: messagesQuery })
+  //   .then(({ data }) => setResult({ loading: false, data }));
+  const messages = data ? data.messages : [];
 
   const handleSend = (text) => {
-    const message = { id: text, from: "you", text };
-    setMessages(messages.concat(message));
+    // TODO
   };
   return (
     <section className="section">
