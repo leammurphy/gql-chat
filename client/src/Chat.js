@@ -9,7 +9,7 @@ import {
 import MessageInput from "./MessageInput";
 import MessageList from "./MessageList";
 
-const Chat = ({ user }) => {
+function useChatMessages() {
   const { data } = useQuery(messagesQuery);
   const messages = data ? data.messages : [];
   useSubscription(messageAddedSubscription, {
@@ -22,6 +22,14 @@ const Chat = ({ user }) => {
     },
   });
   const [addMessage] = useMutation(addMessageMutation);
+  return {
+    messages,
+    addMessage,
+  };
+}
+
+const Chat = ({ user }) => {
+  const { messages, addMessage } = useChatMessages();
 
   const handleSend = async (text) => {
     const { data } = await addMessage({ variables: { input: { text } } });
