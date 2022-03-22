@@ -3,25 +3,5 @@
     "id": "SJKhIAKYB",
     "from": "system",
     "text": "Welcome!"
-  },
-  {
-    "id": "rJo6Jkvfq",
-    "from": "alice",
-    "text": "what"
-  },
-  {
-    "id": "HJ43ZJDGc",
-    "from": "alice",
-    "text": "hi"
-  },
-  {
-    "id": "r1sSGJvfc",
-    "from": "alice",
-    "text": "now"
-  },
-  {
-    "id": "HJ2OGJvfq",
-    "from": "alice",
-    "text": "works?"
   }
 ]
